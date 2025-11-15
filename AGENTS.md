@@ -21,19 +21,3 @@ Commits follow the conventional imperative style seen in `git log --oneline` (e.
 
 ## Security & Configuration Tips
 Store secrets such as `WORD_HERO_API_KEY` in `.env.local` (excluded via `.gitignore`) and load them through `configs/`. Never commit production dictionaries or proprietary corpora—reference them via download scripts under `scripts/`. Validate third-party prompts or plugins before integration to avoid leaking tokens.
-
-## Task Dispatch Protocol
-- Agent/service operating rules live in `agent_read.md`. Review it whenever bootstrapping a new service profile so every repo shares the same collaboration model.
-- `agent_service.yaml` replaces the legacy `service_list.md` and is the single source of truth for every service name, type, repo URL, and role. Query it before assigning work.
-- `word-hero-agent` is the only agent-class service. It gathers requirements, designs architecture, and decides which downstream service owns each task.
-- `word-hero-api` is the sole API service. Any interface change must start with an issue here before other services act on it.
-- Delivery services such as `word-hero` or `word-hero-web` only execute work that arrives via issues addressed to them and close those issues once done.
-- 外部服务（如 `word-hero`, `word-hero-web`）的任务必须以 GitHub Issue 形式派发。
-- 先在本仓库存放 Issue 描述模板（`issues/<service>-<task>.md`），便于复用与审计。
-- 通过 `gh issue create --repo <owner/repo> --title <标题> --body-file <模板路径>` 直接在对应远程仓库创建 Issue，无需克隆仓库。
-- 将生成的 Issue 链接记录进 `service_issues.md`，保持服务与任务状态的单一事实源。
-
-## External Repository Access
-- 当需要审查外部服务代码时，允许在 `.tmp/repos/` 目录下执行 `git clone` 以便本地查看或运行轻量脚本。
-- `.tmp/repos/` 视为临时空间，只用于读取/分析，不在其中提交或推送代码；完成后可选择清理。
-- 若需在这些克隆仓库中运行命令，先确认不会污染其 Git 历史，并避免将结果混入 `word-hero-agent` 工作树。
