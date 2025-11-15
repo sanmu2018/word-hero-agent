@@ -20,10 +20,12 @@ service_issues.md 记录每次提交的issue链接，后续追踪
 ### 2.api服务类
 ```text
 此服务只有一个，涉及到接口变更的 首先应该给这个服务提交issue,完成api的变更
+此服务的任务从自身repo的issue读取，并完成
 ```
 ### 3.service 其他具体服务类
 ```text
 多个具体服务，逐个读取issue,一个个完成issue 并且关闭issue就行了
+此服务的任务从自身repo的issue读取，并完成
 ```
 # 以下规范性约定，所有服务都要遵循
 ```text
