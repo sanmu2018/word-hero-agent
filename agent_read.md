@@ -13,7 +13,7 @@ AI 为主要任务完成角色，以这个条件为前提，设计AI工作规范
 此服务是所有的服务总线这个服务担任产品经理，以及架构师的角色
 负责给分析需求，架构设计，分发任务
 包含以下必要文件
-agent_service.yaml文件，这个文件记录自身服务类别，以及其他服务，以及每个服务的角色和功能
+agent_service.yaml 这个文件记录所有的服务类别以及地址等相关信息,以及每个服务的角色和功能
 agent_role.yaml 这个文件记录当前服务是那种类别,并且指定了遵循哪个agent服务
 service_issues.md 记录每次提交的issue链接，后续追踪
 如何分发任务，需求梳理完毕，任务梳理完毕后，应当得出具体功能由哪个服务完成，给那个服务提交issue(gh create issue)
@@ -32,10 +32,11 @@ agent_role.yaml 这个文件记录当前服务是那种类别,并且指定了遵
 ```
 # 以下规范性约定，所有服务都要遵循
 ```text
-1.从 agent 了解所有服务信息，或者架构信息,访问地址参考agent_role.yaml 下的 agent_url
-2.从 api 读取最新api协议
-3.每次任务都从issue读取，只完成自己服务的部分，关闭issue
-4.需要读取其他服务代码的时候，允许将代码下载到临时目录.tmp/repos/ 下，该目录只允许临时阅读代码
+从 agent 了解所有服务信息，或者架构信息,访问地址参考agent_role.yaml 下的 agent_url
+从 api 读取最新api协议
+每次任务都从issue读取，只完成自己服务的部分，关闭issue
+需要读取其他服务代码的时候，允许将代码下载到临时目录.tmp/repos/ 下，该目录只允许临时阅读代码
+从agent服务的repo中读取 agent_service.yaml ，以获取其他服务相关信息
 ```
 # 当前服务的服务类别: agent_service.yaml读取
 
