@@ -1,0 +1,18 @@
+service_type: agent
+service_repos:
+  - name: word-hero-agent
+    service_type: agent
+    url: https://github.com/sanmu2018/word-hero-agent
+    role: top-level product manager and architect that gathers requirements, defines API contracts, and assigns work to downstream services.
+  - name: word-hero-api
+    service_type: api
+    url: https://github.com/sanmu2018/word-hero-api
+    role: Curates and governs the shared API contracts used by backend and web clients, ensuring every endpoint is documented and versioned consistently.
+  - name: word-hero-web
+    service_type: service
+    url: https://github.com/sanmu2018/word-hero-web
+    role: Delivers the web UI tasks provided by the agent and consumes the published APIs.
+  - name: word-hero
+    service_type: service
+    url: https://github.com/sanmu2018/word-hero
+    role: Implements backend logic per agent specs and reports status upstream.
