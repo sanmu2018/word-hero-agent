@@ -1,6 +1,6 @@
 # 声明
 ```text
-此文件为模板文件，用于给其他服务生成AGENT.md 或者Claude.md 记忆规则使用
+此文件为模板文件，用于给其他服务生成AGENTS.md 或者CLAUDE.md 记忆规则使用
 ```
 # 微服务工作模式
 ```text
@@ -32,8 +32,9 @@ agent_role.yaml 这个文件记录当前服务是那种类别,并且指定了遵
 ```
 # 以下规范性约定，所有服务都要遵循
 ```text
-从 agent 了解所有服务信息，或者架构信息,访问地址参考agent_role.yaml 下的 agent_url
-从 api 读取最新api协议
+非agent类型的服务，从agent了解所有服务信息，或者架构信息,访问地址参考agent_role.yaml 下的 agent_url
+agent类的服务，从本地文件 agent_service.yaml了解所有服务信息
+从 api 服务读取最新api协议，而api服务信息来自agent服务，如果需要，请下载后查看
 每次任务都从issue读取，只完成自己服务的部分，关闭issue
 需要读取其他服务代码的时候，允许将代码下载到临时目录.tmp/repos/ 下，该目录只允许临时阅读代码
 从agent服务的repo中读取 agent_service.yaml ，以获取其他服务相关信息
